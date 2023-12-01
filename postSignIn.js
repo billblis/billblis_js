@@ -3,14 +3,15 @@ import { setInner, getValue } from "https://jscroot.github.io/element/croot.js";
 
 const PostSignIn = () => {
     const target_url = "https://asia-southeast2-xenon-hawk-402203.cloudfunctions.net/Billblis";
-    const tokenkey = "token";
-    const tokenvalue = "5f2dcd0e6f39ad4515c8397819a04a22bd6ff03d63b0eaa5913c9e93a217c33b";
+    // const tokenkey = "token";
+    // const tokenvalue = "5f2dcd0e6f39ad4515c8397819a04a22bd6ff03d63b0eaa5913c9e93a217c33b";
     const datainjson = {
-        username: getValue("username"),
+        name: getValue("name"),
         password: getValue("password")
     };
 
-    postWithToken(target_url, tokenkey, tokenvalue, datainjson, responseData);
+    // postWithToken(target_url, tokenkey, tokenvalue, datainjson, responseData);
+    postWithToken(target_url, datainjson, responseData);
 };
 
 const responseData = (result) => {
