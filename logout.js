@@ -1,4 +1,4 @@
-import deleteCookie from "./cookie.js";
+import { deleteCookie} from "https://jscroot.github.io/cookie/croot.js";
 
 const logout = () => {
     Swal.fire({
@@ -13,13 +13,12 @@ const logout = () => {
         if (result.isConfirmed) {
             // Jika klik "Ya, logout!"
             deleteCookie("token"); // Menghapus cookie token
-            window.location.href = '../pages/login.html';
+            window.location.href = "../pages/login.html";
         } else {
             // Jika klik "Cancel"
-            window.location.href = 'dashboard.html'; 
+            window.location.href = "dashboard.html"; 
         }
     });
 }
 
-// Panggil fungsi logout saat halaman dimuat
-window.logout = logout;
+document.getElementById("button").addEventListener("click", logout);
