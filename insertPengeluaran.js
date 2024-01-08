@@ -2,14 +2,14 @@ import { postWithToken } from "https://jscroot.github.io/api/croot.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
 import { getValue } from "https://jscroot.github.io/element/croot.js"
 
-const insertPemasukan = () => {
-    const target_url = "https://asia-southeast2-xenon-hawk-402203.cloudfunctions.net/insertPemasukan"
+const insertPengeluaran = () => {
+    const target_url = "https://asia-southeast2-xenon-hawk-402203.cloudfunctions.net/insertPengeluaran"
     const tokenkey = "Authorization";
     const tokenvalue = getCookie("Authorization");
 
     const data = {
-        "tanggal_masuk": getValue("tanggal_masuk"),
-        "jumlah_masuk": parseInt(getValue("jumlah_masuk")),
+        "tanggal_keluar": getValue("tanggal_keluar"),
+        "jumlah_keluar": parseInt(getValue("jumlah_keluar")),
         "sumber": getValue("sumber"),
         "deskripsi": getValue("deskripsi"),
     }
@@ -24,7 +24,7 @@ const responseData = (result) => {
             title: "Insert Successful",
             text: result.message,
         }).then(() => {
-            window.location.href = "pemasukan.html";
+            window.location.href = "pengeluaran.html";
         });
     } else {
         Swal.fire({
@@ -37,4 +37,4 @@ const responseData = (result) => {
 
 const btnInsert = document.getElementById("btnInsert");
 
-btnInsert.addEventListener("click", insertPemasukan);
+btnInsert.addEventListener("click", insertPengeluaran);

@@ -2,13 +2,17 @@ import { postWithToken } from "https://jscroot.github.io/api/croot.js";
 import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
 import { getValue } from "https://jscroot.github.io/element/croot.js"
 
-const insertPemasukan = () => {
+const insertBanyakPemasukan = () => {
     const target_url = "https://asia-southeast2-xenon-hawk-402203.cloudfunctions.net/insertPemasukan"
     const tokenkey = "Authorization";
     const tokenvalue = getCookie("Authorization");
 
     const data = {
         "tanggal_masuk": getValue("tanggal_masuk"),
+        "jumlah_masuk": parseInt(getValue("jumlah_masuk")),
+        "sumber": getValue("sumber"),
+        "jumlah_masuk": parseInt(getValue("jumlah_masuk")),
+        "sumber": getValue("sumber"),
         "jumlah_masuk": parseInt(getValue("jumlah_masuk")),
         "sumber": getValue("sumber"),
         "deskripsi": getValue("deskripsi"),
@@ -37,4 +41,4 @@ const responseData = (result) => {
 
 const btnInsert = document.getElementById("btnInsert");
 
-btnInsert.addEventListener("click", insertPemasukan);
+btnInsert.addEventListener("click", insertBanyakPemasukan);
