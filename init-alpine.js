@@ -48,11 +48,11 @@ function data() {
       this.isPagesMenuOpen = !this.isPagesMenuOpen
     },
     isChangePasswordOpen: false,
-    toggleChangePemasukanMenu() {
+    toggleChangePasswordMenu() {
       this.isChangePasswordOpen = !this.isChangePasswordOpen
     },
     closeChangePasswordMenu() {
-      this.isChangePaswwordOpen = false
+      this.isChangePasswordOpen = false
     },
     isPemasukanMenuOpen: false,
     togglePemasukanMenu() {
