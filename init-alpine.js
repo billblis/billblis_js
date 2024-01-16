@@ -49,7 +49,7 @@ function data() {
     },
     isChangePasswordOpen: false,
     toggleChangePemasukanMenu() {
-      this.sChangePasswordOpen = !this.sChangePasswordOpen
+      this.isChangePasswordOpen = !this.isChangePasswordOpen
     },
     closeChangePasswordMenu() {
       this.isChangePaswwordOpen = false
