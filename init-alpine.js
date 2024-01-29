@@ -47,13 +47,6 @@ function data() {
     togglePagesMenu() {
       this.isPagesMenuOpen = !this.isPagesMenuOpen
     },
-    isChangePasswordOpen: false,
-    toggleChangePasswordMenu() {
-      this.isChangePasswordOpen = !this.isChangePasswordOpen
-    },
-    closeChangePasswordMenu() {
-      this.isChangePasswordOpen = false
-    },
     isPemasukanMenuOpen: false,
     togglePemasukanMenu() {
       this.isPemasukanMenuOpen = !this.isPemasukanMenuOpen

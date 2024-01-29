@@ -1,36 +1,13 @@
-export const post = (target_url, datajson, responseFunction) =>{
+import { getCookie } from "https://jscroot.github.io/cookie/croot.js";
+
+export function postLogin(target_url, data, responseFunction) {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-
-    const raw = JSON.stringify(datajson);
 
     const requestOptions = {
         method: 'POST',
         headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-    };
-
-    fetch(target_url, requestOptions)
-        .then(response => response.text())
-        .then(result => {
-            // console.log(result)
-            return responseFunction(JSON.parse(result))
-        })
-        .catch(error => console.log('error', error));
-}
-
-export const postWithToken = (target_url, tokenkey, tokenvalue, datajson, responseFunction) =>{
-    const myHeaders = new Headers();
-    myHeaders.append(tokenkey, tokenvalue);
-    myHeaders.append("Content-Type", "application/json");
-
-    const raw = JSON.stringify(datajson);
-
-    const requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
+        body: JSON.stringify(data),
         redirect: 'follow'
     };
 
@@ -40,17 +17,11 @@ export const postWithToken = (target_url, tokenkey, tokenvalue, datajson, respon
         .catch(error => console.log('error', error));
 }
 
-export const postWithBearer = (target_url, token, datajson, responseFunction) =>{
-    const myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
-    myHeaders.append("Content-Type", "application/json");
-
-    const raw = JSON.stringify(datajson);
+export function postRegister(target_url, data, responseFunction) {
 
     const requestOptions = {
         method: 'POST',
-        headers: myHeaders,
-        body: raw,
+        body: JSON.stringify(data),
         redirect: 'follow'
     };
 
@@ -60,9 +31,47 @@ export const postWithBearer = (target_url, token, datajson, responseFunction) =>
         .catch(error => console.log('error', error));
 }
 
-export const get = (target_url, responseFunction) =>{
+export function postWithToken(target_url, data, responseFunction) {
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", getCookie("Authorization"));
+
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify(data),
+        redirect: 'follow'
+    };
+
+    fetch(target_url, requestOptions)
+        .then(response => response.text())
+        .then(result => responseFunction(JSON.parse(result)))
+        .catch(error => console.log('error', error));
+}
+
+export function getWithToken(target_url, responseFunction) {
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", getCookie("Authorization"));
+
     const requestOptions = {
         method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+    };
+
+    fetch(target_url, requestOptions)
+        .then(response => response.json())
+        .then(result => responseFunction(result))
+        .catch(error => console.log('error', error));
+}
+
+export function putWithToken(target_url, data, responseFunction) {
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", getCookie("Authorization"));
+
+    const requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: JSON.stringify(data),
         redirect: 'follow'
     };
 
